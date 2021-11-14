@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Serving Web Content</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
+    <body>
+        <div th:insert="~{userMenu :: copy}"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>
+                        <div th:if="${reservationIsValid} == true">
+                            Вы успешно зарезервировали
+                            <span th:text= " ${resource}" th:remove="tag"></span>
+                        </div>
+                        <div th:if="${reservationIsValid} == false">
+                            <span th:text= " ${resource}" th:remove="tag"></span>
+                            не может быть зарезервирована на период
+                        </div>
+                            c
+                            <small th:text="${dateFrom}" >Subtitle</small>
+                            по
+                            <small th:text="${dateTo}" >Subtitle</small>
+                    </h1>
+                    <script>
+                        function locations(resource){
+                            //var id=20; get the value of id and save in id(getElementById or jquery)
+                            window.location.href='../resources/'+resource;
+                        }
+                    </script>
+                    <a class="btn btn-success" role="button" th:onclick="|locations('${resource}')|">Ok</a>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

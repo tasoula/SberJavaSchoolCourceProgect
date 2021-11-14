@@ -1,0 +1,14 @@
+-- TODO: make migration files for all tables
+CREATE TABLE service_types(
+    id INTEGER PRIMARY,
+    name VARCHAR(100) NOT NULL,
+
+)
+
+CREATE TABLE services (
+    id INTEGER NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    dCreate date NOT NULL,
+    typeId INTEGER
+    PRIMARY KEY (id)
+);
